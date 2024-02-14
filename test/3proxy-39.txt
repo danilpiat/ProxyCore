@@ -1,0 +1,47 @@
+### cfgig for modem 3proxy-39. filename 3proxy-39.cfg
+monitor /usr/local/3proxy/3proxy-39.cfg
+
+noforce
+timeouts 1 5 30 60 180 1800 15 60
+maxconn 10000
+nscache 65536
+nserver 77.88.8.8
+nserver 8.8.8.8
+stacksize 65536
+
+#log /var/log/3proxy/3proxy-39.log D
+log /home/iek/logs/3proxy-39.log D
+#log /mnt/logs/3proxy-39.log D
+
+archiver gz /usr/bin/gzip %F
+
+rotate 7
+
+logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
+
+users user1:CL:ferfrts53
+
+auth strong
+allow user1
+proxy -s0 -n -a -p51221 -i10.0.0.3 -e10.0.1.80
+proxy -s0 -n -a -p51222 -i10.0.0.3 -e10.0.1.80
+proxy -s0 -n -a -p51223 -i10.0.0.3 -e10.0.1.80
+proxy -s0 -n -a -p51224 -i10.0.0.3 -e10.0.1.80
+proxy -s0 -n -a -p51225 -i10.0.0.3 -e10.0.1.80
+proxy -s0 -n -a -p51226 -i10.0.0.3 -e10.0.1.81
+proxy -s0 -n -a -p51227 -i10.0.0.3 -e10.0.1.81
+proxy -s0 -n -a -p51228 -i10.0.0.3 -e10.0.1.81
+proxy -s0 -n -a -p51229 -i10.0.0.3 -e10.0.1.81
+proxy -s0 -n -a -p51230 -i10.0.0.3 -e10.0.1.81
+proxy -s0 -n -a -p51231 -i10.0.0.3 -e10.0.1.82
+proxy -s0 -n -a -p51232 -i10.0.0.3 -e10.0.1.82
+proxy -s0 -n -a -p51233 -i10.0.0.3 -e10.0.1.82
+proxy -s0 -n -a -p51234 -i10.0.0.3 -e10.0.1.82
+proxy -s0 -n -a -p51235 -i10.0.0.3 -e10.0.1.82
+proxy -s0 -n -a -p51236 -i10.0.0.3 -e10.0.1.83
+proxy -s0 -n -a -p51237 -i10.0.0.3 -e10.0.1.83
+proxy -s0 -n -a -p51238 -i10.0.0.3 -e10.0.1.83
+proxy -s0 -n -a -p51239 -i10.0.0.3 -e10.0.1.83
+proxy -s0 -n -a -p51240 -i10.0.0.3 -e10.0.1.83
+
+flush

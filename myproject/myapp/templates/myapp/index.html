@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyApp</title>
+</head>
+<body>
+    <button id="myButton" onclick="executeFunction()">Выполнить</button>
+    <p id="status"></p>
+    <script>
+        function executeFunction() {
+            document.getElementById('myButton').disabled = true;
+            document.getElementById('status').innerHTML = 'Выполняется...';
+
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('status').innerHTML = 'Успешно';
+                } else {
+                    document.getElementById('status').innerHTML = 'Ошибка: ' + data.message;
+                }
+                document.getElementById('myButton').disabled = false;
+            })
+            .catch(error => {
+                document.getElementById('status').innerHTML = 'Ошибка: ' + error.message;
+                document.getElementById('myButton').disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
